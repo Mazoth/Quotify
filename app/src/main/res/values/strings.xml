@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Quotify</string>
+    <string name="random_quote_path">quote.json</string>
+    <string name="random_quote_with_category_path">quote/categories</string>
+    <string name="quote_of_the_day_path">qod.json</string>
+    <string name="quote_of_the_day_with_category_path">qod.json?category=</string>
 </resources>
