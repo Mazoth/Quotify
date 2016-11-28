@@ -4,4 +4,8 @@
     <string name="random_quote_with_category_path">quote/categories</string>
     <string name="quote_of_the_day_path">qod.json</string>
     <string name="quote_of_the_day_with_category_path">qod.json?category=</string>
+    <string name="default_quote">People assume that time is a strict progression of cause to affect,
+        but actually, from a non-linear, non subjective point of view it is more like a big ball of
+    wibbily wobbly timey wimey… stuff</string>
+    <string name="default_author">Doctor who (David Tennant)</string>
 </resources>
