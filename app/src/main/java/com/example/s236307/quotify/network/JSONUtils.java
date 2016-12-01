@@ -23,17 +23,26 @@ import java.util.Map;
 
 
 /**
- *
+ * JSONUtils is a class I created to be able to reuse the method I created intended for communicating
+ * with the API through Volley requests.
  */
 public class JSONUtils {
     private static final String API_KEY = "DWuym0C0qOV8EcyNhQFNIAeF";
-    private static int MY_SOCKET_TIMOUT_MS = 10000;
+    private static final String ENDPOINT = "http://quotes.rest/";
 
+    /**
+     * This method is used to fetch a quote from the API as a JSONObject, which is later used to
+     * extract the quote and the author of the quote. When the Volley request is finished, the listener
+     * that is parsed through does it job.
+     *
+     * @param context is the context from which this method is called from
+     * @param path is the custom path that is parsed through depending on what type of quote is wanted
+     * @param listener a listener that listens for changes and updates the widget/app when the job is finished.
+     */
     public static void fetchQuoteAsJson(final Context context, final String path, final OnRequestCompleteListener listener) {
         RequestQueue requestQueue = Volley.newRequestQueue(context);
-        //I have this check to customize the respons, based on what I'm fetching from the API
         final boolean isPathForQuoteOfTheDay = path.toLowerCase().contains("qod.json");
-        String ENDPOINT = "http://quotes.rest/";
+
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, ENDPOINT + path,
                 null, new Response.Listener<JSONObject>() {
             @Override
@@ -61,20 +70,28 @@ public class JSONUtils {
                 return headers;
             }
         };
+
+        //I had a bug where I wouldn't get a new quote from the API, but rather the latest one
+        //which is stored in the cache. Therefore I decided to disable this feature alltogether.
         jsonObjectRequest.setShouldCache(false);
 
+        //  I need to set a retry policy, because the API is slower to respond than Volley allows.
+        int MY_SOCKET_TIMOUT_MS = 1000000;
         jsonObjectRequest.setRetryPolicy(new DefaultRetryPolicy(
                 MY_SOCKET_TIMOUT_MS,
                 DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
                 DefaultRetryPolicy.DEFAULT_BACKOFF_MULT)
         );
-
+        //Add the request to the queue.
         requestQueue.add(jsonObjectRequest);
     }
 
     /**
      * This class is used to convert standard JSONObject response from the API and convert it into
-     * a Quote object which is used elsewhere.
+     * a Quote object which is used elsewhere. In the case of the JSON that was requested from the
+     * API was a "Quote of the day" I have a boolean check that ascertains this. The reason for this
+     * is because Theysaidso.com have decided to nest their quote of the day inside an array,
+     * as opposed to having it as a single JSON Object like they have for the random quote service.
      *
      * @param jsonObject JSONObject that is fetched from the server
      * @param isPathForQuoteOfTheDay See parent
