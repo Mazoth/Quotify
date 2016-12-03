@@ -8,4 +8,17 @@
         but actually, from a non-linear, non subjective point of view it is more like a big ball of
     wibbily wobbly timey wimey… stuff</string>
     <string name="default_author">Doctor who (David Tennant)</string>
+    <string name="random_or_qod_text">Random?</string>
+    <string name="choice_prompt">Select a category</string>
+
+    <string-array name="categories">
+        <item>Art</item>
+        <item>Funny</item>
+        <item>Inspire</item>
+        <item>Life</item>
+        <item>Love</item>
+        <item>Management</item>
+        <item>Sports</item>
+        <item>Students</item>
+    </string-array>
 </resources>

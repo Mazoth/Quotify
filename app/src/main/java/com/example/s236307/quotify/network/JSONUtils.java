@@ -35,15 +35,16 @@ public class JSONUtils {
      * extract the quote and the author of the quote. When the Volley request is finished, the listener
      * that is parsed through does it job.
      *
-     * @param context is the context from which this method is called from
-     * @param path is the custom path that is parsed through depending on what type of quote is wanted
+     * @param context  is the context from which this method is called from
+     * @param path     is the custom path that is parsed through depending on what type of quote is wanted
      * @param listener a listener that listens for changes and updates the widget/app when the job is finished.
      */
     public static void fetchQuoteAsJson(final Context context, final String path, final OnRequestCompleteListener listener) {
         RequestQueue requestQueue = Volley.newRequestQueue(context);
         final boolean isPathForQuoteOfTheDay = path.toLowerCase().contains("qod.json");
+        String finalUrl = ENDPOINT + path;
 
-        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, ENDPOINT + path,
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, finalUrl,
                 null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
@@ -62,7 +63,7 @@ public class JSONUtils {
                     e.printStackTrace();
                 }
             }
-        }){
+        }) {
             @Override
             public Map<String, String> getHeaders() throws AuthFailureError {
                 Map<String, String> headers = new HashMap<>();
@@ -71,11 +72,11 @@ public class JSONUtils {
             }
         };
 
-        //I had a bug where I wouldn't get a new quote from the API, but rather the latest one
+        //There was a bug where I wouldn't get a new quote from the API, but rather the latest one
         //which is stored in the cache. Therefore I decided to disable this feature alltogether.
         jsonObjectRequest.setShouldCache(false);
 
-        //  I need to set a retry policy, because the API is slower to respond than Volley allows.
+        //  I need to set a retry policy, because the API is slower to respond than Volley allows by default, depending on internet speed.
         int MY_SOCKET_TIMOUT_MS = 1000000;
         jsonObjectRequest.setRetryPolicy(new DefaultRetryPolicy(
                 MY_SOCKET_TIMOUT_MS,
@@ -93,18 +94,24 @@ public class JSONUtils {
      * is because Theysaidso.com have decided to nest their quote of the day inside an array,
      * as opposed to having it as a single JSON Object like they have for the random quote service.
      *
-     * @param jsonObject JSONObject that is fetched from the server
+     * @param jsonObject             JSONObject that is fetched from the server
      * @param isPathForQuoteOfTheDay See parent
      * @return A new Quote object
      * @throws JSONException
      */
     public static Quote fromJSONToQuote(JSONObject jsonObject, boolean isPathForQuoteOfTheDay) throws JSONException {
         JSONObject mJsonObject = jsonObject.getJSONObject("contents");
-        if(isPathForQuoteOfTheDay) {
-            mJsonObject = jsonObject.getJSONArray("quotes").getJSONObject(0);
+        if (isPathForQuoteOfTheDay) {
+            mJsonObject = mJsonObject.getJSONArray("quotes").getJSONObject(0);
         }
         String quoteString = mJsonObject.getString("quote");
         String authorString = mJsonObject.getString("author");
         return new Quote(quoteString, authorString);
+    }
+
+    public static String getPath(String category, boolean randomQuote) {
+        String path = randomQuote ? "quote.json" : "qod.json";
+        if (category != null) path += "?category=" + category;
+        return path;
     }
 }

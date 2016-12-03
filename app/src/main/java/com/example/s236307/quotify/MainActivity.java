@@ -2,6 +2,7 @@ package com.example.s236307.quotify;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -12,6 +13,11 @@ import com.example.s236307.quotify.objects.Quote;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.text.SimpleDateFormat;
+import java.util.Arrays;
+import java.util.Calendar;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     OnRequestCompleteListener listener;
@@ -42,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
 //                author.setText(response.getJSONObject("contents").getJSONArray("quotes").getJSONObject(0).getString("author"));
 //            }
 //        };
-        JSONUtils.fetchQuoteAsJson(this, "quote.json", listener);
+        JSONUtils.fetchQuoteAsJson(this, "qod.json", listener);
         Toast.makeText(this, "PresseD", Toast.LENGTH_SHORT).show();
     }
 }

@@ -9,7 +9,7 @@ public class Quote {
     private String quote;
 
     public Quote(String quote, String author) {
-        this.author = author.equals("null") ? "Unknown" : author;
+        this.author = author.equals("null") ? "- Unknown" : "- " + author;
         this.quote = quote;
     }
 

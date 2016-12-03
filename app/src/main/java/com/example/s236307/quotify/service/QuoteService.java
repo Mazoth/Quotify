@@ -33,12 +33,14 @@ public class QuoteService extends Service {
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        getNewQuote();
+        String category = intent.getExtras().getString("category", null);
+        boolean randomQuote = intent.getExtras().getBoolean("randomQuote", false);
+        int appWidgetId = intent.getExtras().getInt("appWidgetId", 0);
+        getNewQuote(category, randomQuote, appWidgetId);
         return super.onStartCommand(intent, flags, startId);
     }
 
-    private void getNewQuote() {
-        String lastUpdated = DateFormat.format("hh:mm:ss", new Date()).toString();
+    private void getNewQuote(String category, boolean randomQuote, final int appWidgetId) {
         OnRequestCompleteListener listener = new OnRequestCompleteListener() {
             @Override
             public void onRequestCompleted(JSONObject response, boolean isPathForQuoteOfTheDay) throws JSONException {
@@ -46,12 +48,11 @@ public class QuoteService extends Service {
                 view = new RemoteViews(getPackageName(), R.layout.quote_widget_layout);
                 view.setTextViewText(R.id.widget_quote_text, quote.getQuote());
                 view.setTextViewText(R.id.widget_author_text, quote.getAuthor());
-                ComponentName thisWidget = new ComponentName(getBaseContext(), QuoteWidget.class);
                 AppWidgetManager manager = AppWidgetManager.getInstance(getBaseContext());
-                manager.updateAppWidget(thisWidget, view);
+                manager.updateAppWidget(appWidgetId, view);
             }
         };
-        JSONUtils.fetchQuoteAsJson(this, "quote.json", listener);
-
+        String path = JSONUtils.getPath(category, randomQuote);
+        JSONUtils.fetchQuoteAsJson(this, path, listener);
     }
 }

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/weekday_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Please select a category if you wish" />
+    <Spinner
+        android:id="@+id/category_spinner"
+        android:layout_width="wrap_content"
+        android:prompt="@string/choice_prompt"
+        android:entries="@array/categories"
+        android:layout_height="wrap_content"/>
+    <CheckBox
+        android:id="@+id/random_or_qod_checkbox"
+        android:text="@string/random_or_qod_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:text="Add"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/add_widget_button" />
+
+</LinearLayout>
