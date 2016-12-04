@@ -24,6 +24,7 @@
         <receiver android:name=".widget.QuoteWidget" android:label="Quote_Widget">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+                <action android:name="android.appwidget.action.APPWIDGET_DISABLED" />
                 <action android:name="com.example.s236307.quotify.widget.QuoteWidget.ACTION_WIDGET_RECEIVER"/>
             </intent-filter>
             <meta-data android:name="android.appwidget.provider" android:resource="@xml/quote_widget_provider_info"/>

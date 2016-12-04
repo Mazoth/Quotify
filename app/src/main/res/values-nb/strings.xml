@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Quotify</string>
+    <string name="default_quote">Jeg elsker å snakke om ingenting. Det er det eneste jeg vet noe om</string>
+    <string name="default_author">Oscar Wilde</string>
+    <string name="random_or_qod_text">Type sitat:</string>
+    <string name="random_or_qod_desc">Som standard får du dagens sitat, men hvis du heller ønsker å få et tilfeldig sitat så huker du av boksen:</string>
+    <string name="select_category_text">Kategori:</string>
+    <string name="save_config_button_text">Lagre</string>
+    <string name="weekday_desc_text">Velg hvilken kategori du ønsker å få sitater fra:</string>
+    <string name="main_activity_info_description">Denne applikasjonen er ment for at du skal legge en widget
+        på hjemskjermen din. Derfor kommer du bare til å få dagens sitat her for å forhåndsvise hvordan widgeten ser ut!</string>
+
+    <string-array name="categories">
+        <item>Art</item>
+        <item>Funny</item>
+        <item>Inspire</item>
+        <item>Life</item>
+        <item>Love</item>
+        <item>Management</item>
+        <item>Sports</item>
+        <item>Students</item>
+    </string-array>
+</resources>

@@ -8,8 +8,14 @@
         but actually, from a non-linear, non subjective point of view it is more like a big ball of
     wibbily wobbly timey wimey… stuff</string>
     <string name="default_author">Doctor who (David Tennant)</string>
-    <string name="random_or_qod_text">Random?</string>
+    <string name="random_or_qod_text">Type of Quote:</string>
+    <string name="random_or_qod_desc">By default, you will get the quote of the day, but if you would like a random quote instead please check this box:</string>
     <string name="choice_prompt">Select a category</string>
+    <string name="save_config_button_text">Save</string>
+    <string name="select_category_text">Category:</string>
+    <string name="weekday_desc_text">If you would like to select a specific category for your quotes, select one:</string>
+    <string name="main_activity_info_description">This application will only display this default Quote to sample the widget.
+        The real magic of Quotify is it\'s included widget that you can place on your home screen. You can find it under widgets!</string>
 
     <string-array name="categories">
         <item>Art</item>

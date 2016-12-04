@@ -2,6 +2,7 @@ package com.example.s236307.quotify.network;
 
 import android.content.Context;
 import android.util.Log;
+import android.widget.RemoteViews;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.DefaultRetryPolicy;
@@ -27,7 +28,7 @@ import java.util.Map;
  * with the API through Volley requests.
  */
 public class JSONUtils {
-    private static final String API_KEY = "DWuym0C0qOV8EcyNhQFNIAeF";
+    private static final String API_KEY = "O9ldaBA1X8Ibp3xRzCRkzQeF";
     private static final String ENDPOINT = "http://quotes.rest/";
 
     /**
@@ -50,6 +51,7 @@ public class JSONUtils {
             public void onResponse(JSONObject response) {
                 try {
                     listener.onRequestCompleted(response, isPathForQuoteOfTheDay);
+                    Log.i("JsonUtils", response.toString());
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -111,7 +113,12 @@ public class JSONUtils {
 
     public static String getPath(String category, boolean randomQuote) {
         String path = randomQuote ? "quote.json" : "qod.json";
-        if (category != null) path += "?category=" + category;
+        if (category != null) {
+            path += "?category=" + category;
+            path += "&maxlength=200";
+        } else
+            path += "?maxlength=200";
         return path;
     }
+
 }

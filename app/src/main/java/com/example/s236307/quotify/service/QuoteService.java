@@ -31,12 +31,14 @@ public class QuoteService extends Service {
         return null;
     }
 
+
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         String category = intent.getExtras().getString("category", null);
         boolean randomQuote = intent.getExtras().getBoolean("randomQuote", false);
         int appWidgetId = intent.getExtras().getInt("appWidgetId", 0);
         getNewQuote(category, randomQuote, appWidgetId);
+        stopSelf(startId);
         return super.onStartCommand(intent, flags, startId);
     }
 
@@ -45,14 +47,12 @@ public class QuoteService extends Service {
             @Override
             public void onRequestCompleted(JSONObject response, boolean isPathForQuoteOfTheDay) throws JSONException {
                 Quote quote = JSONUtils.fromJSONToQuote(response, isPathForQuoteOfTheDay);
-                view = new RemoteViews(getPackageName(), R.layout.quote_widget_layout);
-                view.setTextViewText(R.id.widget_quote_text, quote.getQuote());
-                view.setTextViewText(R.id.widget_author_text, quote.getAuthor());
-                AppWidgetManager manager = AppWidgetManager.getInstance(getBaseContext());
-                manager.updateAppWidget(appWidgetId, view);
+                QuoteWidget.bindRemoteViews(getBaseContext(), quote, appWidgetId);
             }
         };
         String path = JSONUtils.getPath(category, randomQuote);
+        Log.i("QuoteService with ID: ", appWidgetId + "" + "with path " + path);
         JSONUtils.fetchQuoteAsJson(this, path, listener);
     }
+
 }

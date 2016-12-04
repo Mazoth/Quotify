@@ -38,17 +38,6 @@ public class MainActivity extends AppCompatActivity {
                 author.setText(quote.getAuthor());
             }
         };
-    }
-
-    public void getQuote(View view){
-//        listener = new OnRequestCompleteListener() {
-//            @Override
-//            public void onRequestCompleted(JSONObject response) throws JSONException {
-//                textField.setText(response.getJSONObject("contents").getJSONArray("quotes").getJSONObject(0).getString("quote"));
-//                author.setText(response.getJSONObject("contents").getJSONArray("quotes").getJSONObject(0).getString("author"));
-//            }
-//        };
-        JSONUtils.fetchQuoteAsJson(this, "qod.json", listener);
-        Toast.makeText(this, "PresseD", Toast.LENGTH_SHORT).show();
+        JSONUtils.fetchQuoteAsJson(this, "qod.json?category=funny", listener);
     }
 }
