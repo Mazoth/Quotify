@@ -2,7 +2,6 @@ package com.example.s236307.quotify.widget;
 
 import android.app.Activity;
 import android.appwidget.AppWidgetManager;
-import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -15,12 +14,10 @@ import android.widget.Toast;
 import com.example.s236307.quotify.R;
 
 /**
- * Created by Marius on 01.12.2016.
  */
 
 public class QuoteWidgetConfig extends Activity {
     int appWidgetId = AppWidgetManager.INVALID_APPWIDGET_ID;
-    public static String ACTION_WIDGET_CONFIGRE = "WIDGET_CONFIGURED";
     private static final String PREFS_NAME = "com.example.s236307.quotify.widget.QuoteWidget";
     private static final String PREF_CATEGORY_KEY = "category_";
     private static final String PREF_RANDOM_KEY = "random_";

@@ -16,6 +16,8 @@
     <string name="weekday_desc_text">If you would like to select a specific category for your quotes, select one:</string>
     <string name="main_activity_info_description">This application will only display this default Quote to sample the widget.
         The real magic of Quotify is it\'s included widget that you can place on your home screen. You can find it under widgets!</string>
+    <string name="interval_desc_text">Here you can set the timer for when you get a new quote. Default is every 24 hours, but you can select it to update X hours:</string>
+    <string name="interval_text_text">Interval:</string>
 
     <string-array name="categories">
         <item>Art</item>
@@ -26,5 +28,13 @@
         <item>Management</item>
         <item>Sports</item>
         <item>Students</item>
+    </string-array>
+    <string-array name="intervals">
+        <item>4</item>
+        <item>8</item>
+        <item>12</item>
+        <item>16</item>
+        <item>20</item>
+        <item>24</item>
     </string-array>
 </resources>

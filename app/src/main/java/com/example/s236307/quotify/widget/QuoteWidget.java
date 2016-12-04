@@ -2,10 +2,8 @@ package com.example.s236307.quotify.widget;
 
 import android.app.AlarmManager;
 import android.app.PendingIntent;
-import android.app.Service;
 import android.appwidget.AppWidgetManager;
 import android.appwidget.AppWidgetProvider;
-import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
@@ -19,14 +17,8 @@ import com.example.s236307.quotify.service.QuoteService;
 
 import java.util.Calendar;
 
-/**
- * Created by Marius on 01.12.2016.
- */
 
 public class QuoteWidget extends AppWidgetProvider {
-    public static String ACTION_WIDGET_CONFIGURE = "ConfigureWidget";
-    public static String ACTION_WIDGET_RECEIVER = "ActionReceiverWidget";
-
     @Override
     public void onUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds) {
         Toast.makeText(context, "The widget was onUpdated()!", Toast.LENGTH_SHORT).show();
@@ -39,7 +31,6 @@ public class QuoteWidget extends AppWidgetProvider {
             } else {
                 updateAppWidget(context, appWidgetId, "", true);
             }
-//            super.onUpdate(context, appWidgetManager, appWidgetIds);
         }
     }
 
@@ -51,7 +42,6 @@ public class QuoteWidget extends AppWidgetProvider {
     @Override
     public void onDisabled(Context context) {
         super.onDisabled(context);
-        final AlarmManager m = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
     }
 
     public void updateAppWidget(Context context, int appWidgetId,

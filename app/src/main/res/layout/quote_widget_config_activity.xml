@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     android:weightSum="1">
 
     <RelativeLayout
@@ -10,6 +11,7 @@
         android:layout_height="66dp"
         android:layout_margin="5dp"
         android:layout_weight="0.05">
+
         <TextView
             android:id="@+id/weekday_text"
             android:layout_width="wrap_content"
@@ -17,6 +19,7 @@
             android:text="@string/select_category_text"
             android:textColor="#000000"
             android:textSize="20sp" />
+
         <TextView
             android:id="@+id/weekday_desc"
             android:layout_width="wrap_content"
@@ -28,55 +31,88 @@
         <Spinner
             android:id="@+id/category_spinner"
             android:layout_width="wrap_content"
-            android:prompt="@string/choice_prompt"
-            android:entries="@array/categories"
             android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/weekday_desc"
+            android:entries="@array/categories"
+            android:prompt="@string/choice_prompt"
+            android:layout_alignTop="@+id/weekday_desc"
             android:layout_alignParentEnd="true" />
 
     </RelativeLayout>
 
 
     <RelativeLayout
-        android:orientation="horizontal"
         android:id="@+id/random_or_not_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="5dp">
+        android:layout_margin="5dp"
+        android:orientation="horizontal">
 
         <TextView
-            android:text="@string/random_or_qod_text"
+            android:id="@+id/random_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/random_text"
+            android:text="@string/random_or_qod_text"
             android:textColor="#000000"
             android:textSize="20sp" />
 
         <TextView
-            android:text="@string/random_or_qod_desc"
+            android:id="@+id/random_desc"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/random_desc"
-            android:layout_marginEnd="40dp"
             android:layout_below="@+id/random_text"
-            android:layout_toStartOf="@+id/random_or_qod_checkbox" />
+            android:layout_marginEnd="40dp"
+            android:layout_toStartOf="@+id/random_or_qod_checkbox"
+            android:text="@string/random_or_qod_desc" />
 
         <CheckBox
             android:id="@+id/random_or_qod_checkbox"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="right|center_vertical"
-            android:layout_marginEnd="38dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="38dp" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/interval_config_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.05"
+        android:layout_margin="5dp">
+
+
+        <TextView
+            android:id="@+id/interval_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/interval_text_text"
+            android:textColor="#000000"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/interval_desc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/interval_text"
+            android:layout_marginEnd="40dp"
+            android:layout_toStartOf="@+id/interval_spinner"
+            android:text="@string/interval_desc_text" />
+
+        <Spinner
+            android:id="@+id/interval_spinner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:entries="@array/intervals"
             android:layout_centerVertical="true"
             android:layout_alignParentEnd="true" />
     </RelativeLayout>
 
     <Button
-        android:text="@string/save_config_button_text"
+        android:id="@+id/add_widget_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:id="@+id/add_widget_button" />
+        android:text="@string/save_config_button_text" />
 
 </LinearLayout>
