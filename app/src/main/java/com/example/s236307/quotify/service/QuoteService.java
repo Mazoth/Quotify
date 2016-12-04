@@ -22,6 +22,10 @@ import org.json.JSONObject;
 
 import java.util.Date;
 
+/**
+ * This class extends Service and is made to request a new Quote from the API whenever it's called.
+ * The interval is set in the alarmmanager in QuoteWidget.class
+ */
 public class QuoteService extends Service {
     private RemoteViews view;
 

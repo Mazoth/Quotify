@@ -10,6 +10,8 @@
     <string name="weekday_desc_text">Velg hvilken kategori du ønsker å få sitater fra:</string>
     <string name="main_activity_info_description">Denne applikasjonen er ment for at du skal legge en widget
         på hjemskjermen din. Derfor kommer du bare til å få dagens sitat her for å forhåndsvise hvordan widgeten ser ut!</string>
+    <string name="interval_text_text">Intervall:</string>
+    <string name="interval_desc_text">Her kan du velge hvor ofte du vil ha et nytt sitat. Standard er 1/døgn, men du kan velge oftere:</string>
 
     <string-array name="categories">
         <item>Art</item>
@@ -20,5 +22,13 @@
         <item>Management</item>
         <item>Sports</item>
         <item>Students</item>
+    </string-array>
+    <string-array name="intervals">
+        <item>24</item>
+        <item>20</item>
+        <item>16</item>
+        <item>12</item>
+        <item>8</item>
+        <item>4</item>
     </string-array>
 </resources>

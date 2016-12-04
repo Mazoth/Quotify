@@ -19,6 +19,12 @@ import java.util.Arrays;
 import java.util.Calendar;
 import java.util.List;
 
+/**
+ * This class is mandetory for my application, as I can't seem to be able to run widgets, update
+ * them and make them work properly, without this main activity at the root. This activity simply
+ * tells the user that the real "magic" happens with the widget, and I showcase how the widget looks
+ * like visually.
+ */
 public class MainActivity extends AppCompatActivity {
     OnRequestCompleteListener listener;
     TextView textField, author;

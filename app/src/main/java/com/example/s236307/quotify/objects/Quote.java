@@ -1,7 +1,7 @@
 package com.example.s236307.quotify.objects;
 
 /**
- * Object Quote.
+ *  Simple Quote Object.
  */
 
 public class Quote {
